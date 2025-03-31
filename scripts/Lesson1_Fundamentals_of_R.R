@@ -46,4 +46,8 @@ library(readxl)
 # look at the help documentation and try using the 'skip' argument to skip the first line in the file
 
 ################################################################################
+# read in data of your own: select a file on your computer that you want to read in R
+# move it to this directory and read it in, naming it something different from the dataframes above
+
+################################################################################
   
