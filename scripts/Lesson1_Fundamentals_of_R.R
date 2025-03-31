@@ -46,7 +46,7 @@ str(wq)
 bathy <- # insert code to read in the bathymetry data
 library(readxl)
 ?read_excel  
-# do your columns look funny? 
+# do your columns look funny? this is because it's reading in the first row and putting the column headers in the second row
 # look at the help documentation and try using the 'skip' argument to skip the first line in the file
 
 ################################################################################
