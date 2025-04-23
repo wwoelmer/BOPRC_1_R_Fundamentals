@@ -24,7 +24,7 @@ participant_instructor_ratio <- num_participants/num_instructors
 
 ################################################################################
 # reading in data: you can read in many different file formats into R and each
-# will use their own function (e.g., read.csv, read.table, read_)
+# will use their own function (e.g., read.csv, read.table, read_excel)
 wq <- read.csv('./data/BoP_WQ_formatted.csv') # HINT: hit 'tab' to see a list of files in this directory
 
 str(WQ)
@@ -32,13 +32,36 @@ str(WQ)
 ## troubleshoot the code above so that you can look at the structure of the dataframe
   # this shows us that 'date' is listed as a charater, we need to tell R that this is a date, which has a special structure
 
-view(wq) # this opens up the dataframe to view, you can also do this by clicking on 'df' in the Environment at right
+View(wq) # this opens up the dataframe to view, 
+# you can also do this by clicking on your dataframe ('wq') in the Environment at right
 
 # format as date
 wq$date <- as.Date(wq$date)
 
-# look at structure again
+# look at structure again: did it change?
 str(wq)
+
+# create a new column in the wq dataframe
+wq$Region <- 'Bay of Plenty'
+
+# filter the data to select just one lake, I'll pick Rotoehu
+rotoehu <- wq[wq$lake=='Rotoehu',]
+mean_chl <- mean(rotoehu$chla_mgm3_top)
+mean_chl #### hm that says NA, which means we need to remove the NA's before we take the mean
+
+# look at ?mean and add the argument na.rm, then rerun the mean calculation
+
+# now calculate the standard deviation of chl
+sd_chl <- # INSERT TEXT HERE
+  
+############
+## do the same but for a different lake of your choice 
+
+# filter to a dataframe with just one lake
+
+# calculate the mean of one column
+
+# calculate the standard deviation of one column
 
 
 ####### read in the 'Rotlakes_bathymetry.xls' file. 
@@ -51,7 +74,7 @@ library(readxl)
 
 ################################################################################
 # read in data of your own: select a file on your computer that you want to read in R
-# move it to this directory and read it in, naming it something different from the dataframes above
+# move it to this project directory and read it in, naming it something different from the dataframes above
 
 ################################################################################
   
