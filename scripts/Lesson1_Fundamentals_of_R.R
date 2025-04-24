@@ -35,6 +35,8 @@ str(WQ)
 View(wq) # this opens up the dataframe to view, 
 # you can also do this by clicking on your dataframe ('wq') in the Environment at right
 
+## by looking at the structure str() of our wq dataframe, we can see that the 'date' column
+## is listed as a character...no good in R! we need to tell R it is a date
 # format as date
 wq$date <- as.Date(wq$date)
 
@@ -49,10 +51,10 @@ rotoehu <- wq[wq$lake=='Rotoehu',]
 mean_chl <- mean(rotoehu$chla_mgm3_top)
 mean_chl #### hm that says NA, which means we need to remove the NA's before we take the mean
 
-# look at ?mean and add the argument na.rm, then rerun the mean calculation
+# look at help documentation (?mean) and add the argument na.rm, then rerun the mean calculation
 
 # now calculate the standard deviation of chl
-sd_chl <- # INSERT TEXT HERE
+sd_chl <- # INSERT CODE HERE
   
 ############
 ## do the same but for a different lake of your choice 
@@ -63,6 +65,8 @@ sd_chl <- # INSERT TEXT HERE
 
 # calculate the standard deviation of one column
 
+#################################################################################
+# let's look at the bathymetry of the rotorua lakes
 
 ####### read in the 'Rotlakes_bathymetry.xls' file. 
 # what do you need to change from read.csv() for a .xls file? talk to your neighbor, google, or ChatGPT
