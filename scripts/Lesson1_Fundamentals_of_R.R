@@ -135,9 +135,11 @@ sd_chl <- # INSERT CODE HERE
 # calculate one other summary statistic of interest and insert the code below
 #### INSERT CODE HERE  
 
-########## repeat the above but for a different lake of your choice ############
+###### repeat the above but subset for a different condition of your choice #####
 
-# filter the wq dataframe to just one lake using either indexing or filter()
+# subset the wq dataframe using either indexing or filter() 
+# some suggestions include: subset to lakes with high DRP, subset to a different lake, 
+# subset the data within a certain time period, etc. With R, the world is your oyster!!
 ### INSERT CODE HERE
 
 # plot the data
@@ -146,7 +148,7 @@ sd_chl <- # INSERT CODE HERE
 # calculate three summary statistics
 ### INSERT CODE HERE
 
-# write the data as a csv
+# write the dataframe as a csv inside the data folder in this project
 ### INSERT CODE HERE
 
 ################################################################################
