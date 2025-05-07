@@ -73,7 +73,7 @@ wq$lake <- factor(wq$lake, levels = c('Rotoehu', 'Rerewhakaaitu', 'Okaro',
                                       'Tarawera', 'Rotoiti', 'Rotomahana'))
 
 # now look at the structure again: is lake a factor or character?
-str(wq)
+str(wq$lake)
 
 # now let's plot the data
 # ggplot requires a dataframe (here, 'wq'), and then the aesthetics or aes()
