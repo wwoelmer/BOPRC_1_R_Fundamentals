@@ -97,6 +97,9 @@ Now that we've read in our data, let's look at its structure.
 ```r
 str(WQ)
 ```
+> str(WQ)
+Error: object 'WQ' not found
+
 Woah, why didn't that work?? 
 Troubleshoot the code and rerun so that you can look at the structure of the dataframe
 
