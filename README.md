@@ -46,7 +46,7 @@ and navigate to the package name you just loaded. There should be a check next
 to it if it has been loaded properly. If you don't see the package at all,
 that means it has not been installed.
 
-## Create objects
+## Creating objects
 
 Objects can be created in R using the assign <- or equal = sign keys
 
@@ -76,9 +76,12 @@ getwd()
 Running `getwd()` tells you *where* your working directory is located. Since we 
 are using a project, your working directory will be where you put your project 
 on your computer. If you don't use a project, you will need to set a 
-working directory using `setwd()` However, I DO NOT recommend setting working 
-directories for reproducibility reasons. Projects are the best way to organize 
-your files. But see other resources about this if desired: https://rpubs.com/em_/wdInR
+working directory using `setwd()`. However, I DO NOT recommend setting working 
+directories for reproducibility reasons. If someone else wanted to run my code,
+they won't have a `C:/Users/wwoelmer/Desktop/uni_files/` folder and will have to
+re-write the code to their own local directory...this causes lots of headaches.
+Projects are the best way to organize your files. But see other resources about 
+this if desired: https://rpubs.com/em_/wdInR
 
 Now that we know our working directory, let's read in the data
 
