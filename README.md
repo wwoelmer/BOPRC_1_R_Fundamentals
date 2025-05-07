@@ -182,7 +182,7 @@ rotoehu <- wq %>%  # this symbol is called a pipe, you can read it as 'whereby'
 
 Using our subsetted dataframe `rotoehu`, let's plot the data using ggplot
 
-````r
+```r
 ggplot(rotoehu, aes(x = as.Date(date), y = chla_mgm3_top)) + 
   geom_point() +
   theme_bw()
