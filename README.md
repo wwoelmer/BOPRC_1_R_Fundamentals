@@ -97,8 +97,8 @@ Now that we've read in our data, let's look at its structure.
 ```r
 str(WQ)
 ```
-> str(WQ)
-Error: object 'WQ' not found
+  ## > str(WQ)
+  ## Error: object 'WQ' not found
 
 Woah, why didn't that work?? 
 Troubleshoot the code and rerun so that you can look at the structure of the dataframe
@@ -255,8 +255,8 @@ them as a new object
 mean_chl <- mean(rotoehu$chla_mgm3_top)
 mean_chl #### hm that says NA, which means we need to remove the NA's before we take the mean
 ```
-> mean_chl
-[1] NA
+  ## > mean_chl
+  ## [1] NA
 
 Hmmm that says the `mean_chl` is `NA`. Look at the `rotoehu` dataframe: are all the
 chla values NA? No...which means there must be some NA's in there which have thrown
