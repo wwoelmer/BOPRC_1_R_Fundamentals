@@ -31,7 +31,7 @@ install.packages('tidyverse') # typically, R needs things to be in quotes,
 install.packages('readxl')
 
 ```
-Once all packages are installed you can load them using the ‘library’
+Once all packages are installed you can load them using the `library()`
 function:
 
 ``` r
@@ -46,7 +46,7 @@ and navigate to the package name you just loaded. There should be a check next
 to it if it has been loaded properly. If you don't see the package at all,
 that means it has not been installed.
 
-# Create objects
+## Create objects
 
 Objects can be created in R using the assign <- or equal = sign keys
 
@@ -58,13 +58,13 @@ num_instructors <- # insert number of instructors in the room
 participant_instructor_ratio <- num_participants/num_instructors
 ```
 
-# Read in data, understand data classes, plot data, calculate summary statistics 
+## Read in data, understand data classes, plot data, calculate summary statistics 
 
 You can read in many different file formats into R and each
 will use their own function (e.g., read.csv, read.table, read_excel) depending
 on the file type
 
-## Checking working directories
+### Checking working directories
 
 To read in files, you need to tell R where to look for the file. You can check
 where R is looking by checking your working directory
@@ -88,7 +88,7 @@ View(wq) # this opens up the dataframe to view,
 # you can also do this by clicking on your dataframe ('wq') in the Environment at right
 ```
 
-## Dataframe structure
+### Dataframe structure
 Now that we've read in our data, let's look at its structure. 
 
 ```r
@@ -140,7 +140,7 @@ Now look at the structure of `wq$lake` again: is lake a factor or character?
 str(wq)
 ```
 
-## Plotting data
+### Plotting data
 Now let's plot the `wq` data using the `ggplot` system. `ggplot` requires a 
 dataframe (here, `wq`), and then the aesthetics or `aes()`. This tells it what 
 to put on the x-axis and the y-axis. We have also told it to color the points 
@@ -153,7 +153,7 @@ ggplot(wq, aes(x = as.Date(date), y = DRP_mgm3_top, color = site)) +
   theme_bw() # this sets a 'theme' for how the plot looks, this is the 'black and white' setting
 ```
 
-# Subset data, plot data, calculate summary statistics, write a csv
+## Subset data, plot data, calculate summary statistics, write a csv
 
 We are now going to learn to subset data. Here, let's subset the `wq` dataframe
 to select just one lake, I'll pick Rotoehu. Below is an example of subsetting
@@ -191,7 +191,7 @@ Now, modify the code above to plot a different variable in the rotoehu dataframe
 ## INSERT CODE
 ```
 
-## Writing a .csv file
+### Writing a .csv file
 Now let's save this subsetted data as a new csv file. First, we will bring up the 
 help documentation for the function `write.csv()` so we can see what information
 (called arguments) the function needs us to input
@@ -217,7 +217,7 @@ write.csv(rotoehu, # this is the object we want to export
                              # to avoid having an extra column in the csv file which lists the row number
 ```
 
-## Calculating summary statistics
+### Calculating summary statistics
 Now that we've subset our data, let's calculate some summary statistics and save 
 them as a new object
 
@@ -267,7 +267,7 @@ Repeat the above but subset for a different condition of your choice
 ### INSERT CODE HERE
 ```
 
-# Read in an excel file 
+## Read in an excel file 
 Now we will go from our experience using `read.csv()` to read in an excel file. 
 Specifically, read in the 'Rotlakes_bathymetry.xls' file. Think about: what do 
 you need to change from `read.csv()` for a .xls file? Talk to your neighbor, google, or ChatGPT
@@ -291,7 +291,7 @@ and try using the 'skip' argument to skip the first line in the file
 bathy <- # insert updated code to read bathymetry data using the `skip` argument
 ```
 
-# HOMEWORK/IN CLASS: repeat the exercise above using data of your own 
+## HOMEWORK/IN CLASS: repeat the exercise above using data of your own 
 Select a file on your computer that you want to read in R. Move it to this 
 project directory and read it in as a new object using either `read.csv()` or
 `read_excel()`. Let us know if you have a different file type.
