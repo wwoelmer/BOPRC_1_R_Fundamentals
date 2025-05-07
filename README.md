@@ -204,8 +204,9 @@ help documentation for the function `write.csv()` so we can see what information
 ```
 
 Based on the help documentation, we can see there are lots of arguments, but most
-of them have defaults. The information that R needs to know includes what object we
-are exporting `rotoehu`, the location where we want to save the file (called `file`), 
+of them have defaults. The information that R needs to know includes `x`, which is
+the object we are exporting (in this case, the dataframe `rotoehu`), `file` which
+corresponds to the the location where we want to save the file (in this case, './data/rotoehu_wq.csv'), 
 and we want to set the argument `row.names = FALSE` so that the file isn't written with
 an extra column naming the rows
 
