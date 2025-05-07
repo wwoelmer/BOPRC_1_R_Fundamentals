@@ -41,6 +41,7 @@ wq <- read.csv('./data/BoP_WQ_formatted.csv') # HINT: hit 'tab' to see a list of
 View(wq) # this opens up the dataframe to view, 
 # you can also do this by clicking on your dataframe ('wq') in the Environment at right
 
+# now that we've read in our data, let's look at its structure. 
 str(WQ)
 #### Woah, why didn't that work?? ####
 ## troubleshoot the code so that you can look at the structure of the dataframe
@@ -75,7 +76,7 @@ wq$lake <- factor(wq$lake, levels = c('Rotoehu', 'Rerewhakaaitu', 'Okaro',
 str(wq)
 
 # now let's plot the data
-# ggplot requires a dataframe (here, 'rotoehu'), and then the aesthetics or aes()
+# ggplot requires a dataframe (here, 'wq'), and then the aesthetics or aes()
 # this tells it what to put on the x-axis and the y-axis
 # we have also told it to color the points based on the column 'site'
 ggplot(wq, aes(x = as.Date(date), y = DRP_mgm3_top, color = site)) + 
@@ -83,8 +84,6 @@ ggplot(wq, aes(x = as.Date(date), y = DRP_mgm3_top, color = site)) +
   facet_wrap(~lake, scales = 'free') + # this makes a different panel for each lake, where the scale of both axes are different for each lake
   theme_bw() # this sets a 'theme' for how the plot looks, this is the 'black and white' setting
 
-# let's create a new column in the wq dataframe
-wq$Region <- 'Bay of Plenty'
 
 ################################################################################
 ###### subset data, plot data, calculate summary statistics, write a csv #######
@@ -109,13 +108,23 @@ ggplot(rotoehu, aes(x = as.Date(date), y = chla_mgm3_top)) +
   geom_point() +
   theme_bw()
 
-# by modifying the code above, plot a different variable in the rotoehu dataframe
+# `Now, modify the code above to plot a different variable in the rotoehu dataframe
 ## INSERT CODE
 
-# now let's save this subsetted data as a csv file
+# now let's save this subsetted data as a csv file. First, we will bring up the 
+#help documentation for the function `write.csv()` so we can see what information
+#(called arguments) the function needs us to input
 ?write.csv # bring up the help documentation
+
+# Based on the help documentation, we can see there are lots of arguments, but most
+# of them have defaults. The information that R needs to know includes `x`, which is
+# the object we are exporting (in this case, the dataframe `rotoehu`), `file` which
+# corresponds to the the location where we want to save the file (in this case, './data/rotoehu_wq.csv'), 
+# and we want to set the argument `row.names = FALSE` so that the file isn't written with
+# an extra column naming the rows
+
 write.csv(rotoehu, # this is the object we want to export
-          file = './data/',  # the . means go from the working directory, 
+          file = './data/rotoehu_wq.csv',  # the . means go from the working directory, 
           row.names = FALSE) # which is our project directory (check getwd() to clarify)
                              # then we are writing inside the 'data' folder
                              # and can call the file whatever we want, with the 
@@ -123,9 +132,17 @@ write.csv(rotoehu, # this is the object we want to export
                              # the row.names should be set as FALSE
                              # to avoid having an extra column in the csv file which lists the row number
 
-# now that we've subset our data, let's calculate some summary statistics
+
+# now that we've subset our data, let's calculate some summary statistics and save 
+# them as a new object
 mean_chl <- mean(rotoehu$chla_mgm3_top)
-mean_chl #### hm that says NA, which means we need to remove the NA's before we take the mean
+mean_chl
+
+# Hmmm that says the `mean_chl` is `NA`. Look at the `rotoehu` dataframe: are all the
+# chla values NA? No...which means there must be some NA's in there which have thrown
+# R off. We need to remove the NA's before we take the mean. Look at help 
+# documentation (?mean) and read about the `na.rm` argument. We need to add the 
+# argument na.rm, then rerun the mean calculation
 
 # look at help documentation (?mean) and add the argument na.rm, then rerun the mean calculation
 
@@ -152,10 +169,15 @@ sd_chl <- # INSERT CODE HERE
 ### INSERT CODE HERE
 
 ################################################################################
-############### now we will read in an excel file ##############################
+############### Read in an excel file ##############################
 
+# Now we will build on our experience using `read.csv()` to use a different function
+# to read in an excel file
 ####### read in the 'Rotlakes_bathymetry.xls' file. 
 # what do you need to change from read.csv() for a .xls file? talk to your neighbor, google, or ChatGPT
+
+# First, we will load the library and bring up the help documentation to understand 
+# more about the function
 library(readxl)
 ?read_excel 
 bathy <- # insert code to read in the bathymetry data
@@ -166,7 +188,8 @@ bathy <- # insert code to read in the bathymetry data
 ################################################################################
 ##### HOMEWORK/IN CLASS: repeat the exercise above using data of your own ######
 # select a file on your computer that you want to read in R
-# move it to this project directory and read it in as a new object
+# move it to this project directory and read it in as a new object using either 
+# `read.csv()` or `read_excel()`. Let us know if you have a different file type and need help.
 
 # look at structure, format dates or factors if necessary
 
