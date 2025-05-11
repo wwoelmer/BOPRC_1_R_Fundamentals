@@ -23,11 +23,16 @@ num_instructors <- # insert number of instructors in the room
   
 participant_instructor_ratio <- num_participants/num_instructors
 
+# voila! you've created new objects!
+
 ################################################################################
 ###### read in data, understand data classes, plot data, create new column #####
 
 # you can read in many different file formats into R and each
 # will use their own function (e.g., read.csv, read.table, read_excel)
+
+# to read in a file, you need to tell R where the file is located, relative
+# to your working directory
 
 getwd() # this tells you *where* your working directory is located
         # since we are using a project, it will be where you put your
@@ -38,6 +43,9 @@ getwd() # this tells you *where* your working directory is located
         ### resources about this if desired: https://rpubs.com/em_/wdInR
 
 wq <- read.csv('./data/BoP_WQ_formatted.csv') # HINT: hit 'tab' to see a list of files in this directory
+# the ./ notation means: look in the working directory (that is what the period represents),
+# then in the folder data, then look for a file called BoP_WQ_formatted.csv
+
 View(wq) # this opens up the dataframe to view, 
 # you can also do this by clicking on your dataframe ('wq') in the Environment at right
 
@@ -45,8 +53,8 @@ View(wq) # this opens up the dataframe to view,
 str(WQ)
 #### Woah, why didn't that work?? ####
 ## troubleshoot the code so that you can look at the structure of the dataframe
-  # this shows us that 'date' is listed as a charater, we need to tell R that this is a date, which has a special structure
 
+# once the code is fixed and we can see the structure of the 'wq' dataframe,
 ## by looking at the structure str() of our wq dataframe, we can see that 
 # the first three columns are 'chr' or character, including the 'date' column
 # ...no good in R! We need to tell R to recognize this as a formal 'date' class
@@ -106,7 +114,9 @@ rotoehu <- wq %>%  # this symbol is called a pipe, you can read it as 'whereby'
 # this tells it what to put on the x-axis and the y-axis
 ggplot(rotoehu, aes(x = as.Date(date), y = chla_mgm3_top)) + 
   geom_point() +
-  theme_bw()
+  theme_bw() +
+  xlab('Date')+
+  ylab('Chlorophyll-a (ug/L)')
 
 # `Now, modify the code above to plot a different variable in the rotoehu dataframe
 ## INSERT CODE
@@ -138,7 +148,7 @@ write.csv(rotoehu, # this is the object we want to export
 mean_chl <- mean(rotoehu$chla_mgm3_top)
 mean_chl
 
-# Hmmm that says the `mean_chl` is `NA`. Look at the `rotoehu` dataframe: are all the
+# Hmmm that says the `mean_chl` is `NA` which can't be right. Look at the `rotoehu` dataframe: are all the
 # chla values NA? No...which means there must be some NA's in there which have thrown
 # R off. We need to remove the NA's before we take the mean. Look at help 
 # documentation (?mean) and read about the `na.rm` argument. We need to add the 
